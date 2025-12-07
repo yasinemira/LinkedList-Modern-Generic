@@ -122,8 +122,19 @@ public:
     }
 
     // Time-complexity: O(n)
-    void set(int index)
-    {}
+    void set(int index, T val)
+    {
+        if (index < 0 || index >= m_length) {
+            throw std::out_of_range("Invalid index!");
+        }
+
+        auto temp = m_head;
+        for (size_t i = 0; i < index; ++i) {
+            temp = temp->next;
+        }
+        temp->value = val;
+        std::cout << "Value at the index #" << index << " is now: " << val << std::endl;
+    }
 
     // Time-complexity: O(n)
     void insert(int index, T val) {}
@@ -231,5 +242,20 @@ int main()
         ll.printLinkedList();
         ll.getLength();
     }
+
+    std::cout << "\n----Set elements----\n";
+    {
+        ll.printLinkedList();
+        ll.prepend(77);
+        ll.pop();
+        ll.append(-2);
+        ll.printLinkedList();
+        ll.getHead();
+        ll.getTail();
+        ll.set(3, 24);
+        // Fail on-purpose: ll.set(3);
+        ll.printLinkedList();
+    }
+
     return 0;
 }
