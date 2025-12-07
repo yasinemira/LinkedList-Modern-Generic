@@ -188,6 +188,34 @@ public:
         --m_length;
     }
 
+    void reverse()
+    {
+        if (m_length <= 0) {
+            throw std::runtime_error("Invalid operation!");
+        }
+        
+        if(m_length == 1) {
+            return;
+        }
+
+        //first, swap head and tail
+        auto temp = m_head;
+        m_head = m_tail;
+        m_tail = temp;
+
+        //second, introduce "before" and "after" trackers
+        sp<Node<T>> before = nullptr;
+        sp<Node<T>> after = nullptr;
+
+        // before - temp - after pointers will move in harmony
+        while (temp != nullptr) {
+            after = temp->next;
+            temp->next = before;
+            before = temp;
+            temp = after;
+        }
+    }
+
     T getHead() const
     {
         if (!m_head)
@@ -302,6 +330,10 @@ int main()
         // Fail on-purpose: ll.set(3);
         ll.printLinkedList();
     }
+
+    std::cout << "\n----Reverse the linked list----\n";
+    ll.reverse();
+    ll.printLinkedList();
 
     return 0;
 }
