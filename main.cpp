@@ -137,10 +137,54 @@ public:
     }
 
     // Time-complexity: O(n)
-    void insert(int index, T val) {}
+    void insert(int index, T val) {
+        if (index < 0 || index > m_length) {
+            throw std::out_of_range("Invalid index!");
+        }
+
+        auto newNode = std::make_shared<Node<T>>(val);
+        auto temp = m_head;
+
+        if (index == 0) {
+            prepend(val);
+            return;
+        }
+
+        if (index == m_length) {
+            append(val);
+            return;
+        }
+
+        // go to the index to insert
+        for (size_t i = 0; i < index - 1; ++i) {
+            temp = temp->next;
+        }
+        newNode->next = temp->next;
+        temp->next = newNode;
+    }
 
     // Time-complexity: O(n)
-    void remove(int index, T val) {}
+    void remove(int index) {
+        if (index < 0 || index >= m_length) {
+            throw std::out_of_range("Invalid index!");
+        }
+        
+        if (index == 0) {
+            popFirst();
+            return;
+        }
+
+        if (index == m_length - 1) {
+            pop();
+            return;
+        }
+
+        auto temp = m_head;
+        for (size_t i = 0; i < index - 1; ++i) {
+            temp = temp->next;
+        }
+        temp->next = temp->next->next;
+    }
 
     T getHead() const
     {
