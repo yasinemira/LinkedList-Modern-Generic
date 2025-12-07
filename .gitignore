@@ -4,3 +4,4 @@
 # Ignore all JSON files
 *.json
 main
+.DS_Store
