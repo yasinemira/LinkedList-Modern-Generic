@@ -161,6 +161,7 @@ public:
         }
         newNode->next = temp->next;
         temp->next = newNode;
+        ++m_length;
     }
 
     // Time-complexity: O(n)
@@ -184,6 +185,7 @@ public:
             temp = temp->next;
         }
         temp->next = temp->next->next;
+        --m_length;
     }
 
     T getHead() const
