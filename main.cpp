@@ -3,7 +3,7 @@
 #include <memory>
 
 /**
- * LINKED-LIST EXERCISES
+ * Linked-List implementation using modern C++*
  */
 
 template <typename T>
