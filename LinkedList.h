@@ -208,23 +208,18 @@ public:
         }
     }
 
-    T getHead() const
+    sp<Node<T>> getHead() const
     {
-        if (!m_head)
-        {
-            throw std::out_of_range("no node available/linked-list is empty!");
-        }
+        //removed the throw expressions for sake of exercise applications
         std::cout << "head:" << m_head->value << std::endl;
-        return m_head->value;
+        return m_head;
     }
 
-    T getTail() const
-    {
-        if (!m_tail) {
-            throw std::out_of_range("no node available/linked-list is empty!");
-        }
+    sp<Node<T>> getTail() const
+    {   
+        //removed the throw expressions for sake of exercise applications
         std::cout << "tail: " << m_tail->value << std::endl;
-        return m_tail->value;
+        return m_tail;
     }
 
     int getLength() const
@@ -253,8 +248,8 @@ public:
         ll.pop();
         ll.append(-2);
         ll.prepend(11);
-        ll.getHead();
-        ll.getTail();
+        (void)ll.getHead()->value;
+        (void)ll.getTail()->value;
         ll.set(2, 24);
         ll.printLinkedList();
         return ll;
