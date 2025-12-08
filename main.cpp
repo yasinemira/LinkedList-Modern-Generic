@@ -5,6 +5,7 @@
 
 int main()
 {
+    std::cout << "\n---- Initial linked-list ----\n";
     auto ll = LinkedList<int>::createLinkedList();
 
     std::cout << "\n----Append elements----\n";

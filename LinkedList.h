@@ -125,7 +125,6 @@ public:
             temp = temp->next;
         }
         temp->value = val;
-        std::cout << "Value at the index #" << index << " is now: " << val << std::endl;
     }
 
     // Time-complexity: O(n)
@@ -211,27 +210,24 @@ public:
     sp<Node<T>> getHead() const
     {
         //removed the throw expressions for sake of exercise applications
-        std::cout << "head:" << m_head->value << std::endl;
         return m_head;
     }
 
     sp<Node<T>> getTail() const
     {   
         //removed the throw expressions for sake of exercise applications
-        std::cout << "tail: " << m_tail->value << std::endl;
         return m_tail;
     }
 
     int getLength() const
     {
-        std::cout << "length: " << m_length << std::endl;
         return m_length;
     }
 
     void printLinkedList() const
     {
         auto temp = m_head;
-        while (temp) {
+        while (temp != nullptr) {
             std::cout << temp->value << " ";
             temp = temp->next;
         }
