@@ -48,21 +48,18 @@ public:
     // Time-complexity: O(n)
     void pop()
     {
-        if (!m_head)
-        {
+        if (!m_head) {
             throw std::out_of_range("no node available/linked-list is empty!");
         }
 
-        if (m_length == 1)
-        {
+        if (m_length == 1) {
             m_head.reset();
             m_tail.reset();
             --m_length;
         }
 
         auto temp = m_head;
-        while (temp->next != m_tail)
-        {
+        while (temp->next != m_tail) {
             temp = temp->next;
         }
         m_tail = temp;
@@ -74,13 +71,11 @@ public:
     void prepend(T val)
     {
         auto newNode = std::make_shared<Node<T>>(val);
-        if (m_length == 0)
-        {
+        if (m_length == 0) {
             m_head = newNode;
             m_tail = newNode;
         }
-        else
-        {
+        else {
             newNode->next = m_head;
             m_head = newNode;
         }
@@ -90,18 +85,14 @@ public:
     // Time-complexity: O(1)
     void popFirst()
     {
-        if (!m_head)
-        {
+        if (!m_head) {
             throw std::out_of_range("no node available/the linked-list is empty!");
         }
-        if (m_length == 1)
-        {
+        if (m_length == 1) {
             m_head.reset();
             m_tail.reset();
-        }
-        else
-        {
-            m_head = m_head->next;
+        }else {
+            m_head = std::move(m_head->next);
         }
         --m_length;
     }
@@ -109,8 +100,7 @@ public:
     // Time-complexity: O(n)
     T get(int index)
     {
-        if (index < 0 || index >= m_length)
-        {
+        if (index < 0 || index >= m_length) {
             throw std::out_of_range("Invalid index!");
         }
 
@@ -230,8 +220,7 @@ public:
 
     T getTail() const
     {
-        if (!m_tail)
-        {
+        if (!m_tail) {
             throw std::out_of_range("no node available/linked-list is empty!");
         }
         std::cout << "tail: " << m_tail->value << std::endl;
@@ -247,8 +236,7 @@ public:
     void printLinkedList() const
     {
         auto temp = m_head;
-        while (temp)
-        {
+        while (temp) {
             std::cout << temp->value << " ";
             temp = temp->next;
         }
