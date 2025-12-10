@@ -37,12 +37,15 @@ public:
     }
 
     // Time-complexity: O(1)
-    void append(T val)
+    // changed the return type from void to LinkedList<T>&
+    // for enriching the code with a cascade call capability
+    LinkedList<T>& append(T val)
     {
         auto newNode = std::make_shared<Node<T>>(val);
         m_tail->next = newNode;
         m_tail = newNode;
         ++m_length;
+        return *this;
     }
 
     // Time-complexity: O(n)

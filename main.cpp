@@ -10,9 +10,7 @@ int main()
 
     std::cout << "\n----Append elements----\n";
     {
-        ll.append(10);
-        ll.append(8);
-        ll.append(2);
+        ll.append(10).append(8).append(2);
         (void)ll.getHead()->value;
         (void)ll.getTail()->value;
         ll.printLinkedList();
