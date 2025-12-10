@@ -39,14 +39,23 @@ public:
     // Time-complexity: O(1)
     // changed the return type from void to LinkedList<T>&
     // for enriching the code with a cascade call capability
-    LinkedList<T>& append(T val)
-    {
-        auto newNode = std::make_shared<Node<T>>(val);
+LinkedList<T>& append(int val) 
+{
+    auto newNode = std::make_shared<Node<T>>(val);
+
+    if (m_head == nullptr) { 
+        // To avoid segfault in case the linked-list was empty in the beginning.
+        m_head = newNode;
+        m_tail = newNode;
+    } else {
+        // If the linked-list was already populated.
         m_tail->next = newNode;
         m_tail = newNode;
-        ++m_length;
-        return *this;
     }
+    
+    ++m_length;
+    return *this;
+}
 
     // Time-complexity: O(n)
     void pop()
