@@ -252,8 +252,8 @@ public:
     }
 
 private:
-    sp<Node<T>> m_head;
-    sp<Node<T>> m_tail;
+    sp<Node<T>> m_head{nullptr};
+    sp<Node<T>> m_tail{nullptr};
     int m_length{0};
 };
  
