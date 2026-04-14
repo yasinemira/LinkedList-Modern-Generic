@@ -203,8 +203,7 @@ LinkedList<T>& append(int val)
 
         //first, swap head and tail
         auto temp = m_head;
-        m_head = m_tail;
-        m_tail = temp;
+        std::swap(m_head, m_tail);
 
         //second, introduce "before" and "after" trackers
         sp<Node<T>> before = nullptr;
