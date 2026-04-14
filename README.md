@@ -1,1 +1,1 @@
-Refreshers on good old linked-lists using some modern C++ approaches.
+This repo contains modern and generic C++ approaches for classical Linked-List data structure.
